@@ -4,8 +4,11 @@ class Sum
     {
 
         int a = 2,b = 3, c = 6 , d, sum;
+        float average;
         sum = a + b + c;
         d +sum;
+        average = sum/3;
+        System.out.println(average);
         System.out.println(sum);
     }  
 }  
