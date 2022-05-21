@@ -3,13 +3,12 @@ class Sum
     public static void main(String args[])
     {
 
-        int a = 2,b = 3, c = 6, sum;
-        sum = a + b;
-        c = sum + 4;
-        System.out.println(c);
-
-        int a = 2,b = 3, c = 4, sum;
+        int a = 2,b = 3, c = 6 , d, sum;
+        float average;
         sum = a + b + c;
+        d +sum;
+        average = sum/3;
+        System.out.println(average);
         System.out.println(sum);
     }  
 }  
