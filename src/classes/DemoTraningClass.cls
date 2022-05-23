@@ -1,5 +1,6 @@
 public class DemoTraningClass {   
-    public DemoTraningClass(){
-        system.debug('Hello Debug');
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
     }
 }
+    
