@@ -3,7 +3,7 @@ class Sum
     public static void main(String args[])
     {
 
-        int a = 2,b = 3, c = 6, sum;
+        int a = 2,b = 3, c = 6, d = 8 sum;
         sum = a + b;
         c = sum + 4;
         System.out.println(c);
