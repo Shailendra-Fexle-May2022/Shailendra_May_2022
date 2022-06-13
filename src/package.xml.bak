@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+		<members>Registrar</members>
+        <members>StudentQuery</members>
+        <members>Teacher</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -9,8 +11,66 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Student__c.Account_Number__c</members>
+        <members>Student__c.Addhar_Number__c</members>
+        <members>Student__c.Address__c</members>
+        <members>Student__c.Admission_Date__c</members>
+        <members>Student__c.Back_Subject__c</members>
+        <members>Student__c.Bank_Name__c</members>
+        <members>Student__c.Bank_Phone_NO__c</members>
+        <members>Student__c.City__c</members>
+        <members>Student__c.Class__c</members>
+        <members>Student__c.Contact_No__c</members>
+        <members>Student__c.Current_Year__c</members>
+        <members>Student__c.Donation_Amount__c</members>
+        <members>Student__c.Email_Id__c</members>
+        <members>Student__c.Exam_Fees_Submitted__c</members>
+        <members>Student__c.Father_Mobile_No__c</members>
+        <members>Student__c.Father_Name__c</members>
+        <members>Student__c.Fees_Summitted__c</members>
+        <members>Student__c.Home_Location__c</members>
+        <members>Student__c.IFSC_Code__c</members>
+        <members>Student__c.III_Sem_Back__c</members>
+        <members>Student__c.III_Sem_Percentage__c</members>
+        <members>Student__c.II_Sem_Back__c</members>
+        <members>Student__c.II_Sem_Percentage__c</members>
+        <members>Student__c.IVSem_Percentage__c</members>
+        <members>Student__c.IV_Sem_Back__c</members>
+        <members>Student__c.I_Sem_Back__c</members>
+        <members>Student__c.I_Sem_Percentage__c</members>
+        <members>Student__c.Is_Donation__c</members>
+        <members>Student__c.Landline_Number__c</members>
+        <members>Student__c.Overall_Grade__c</members>
+        <members>Student__c.Pending_Exam_Fees__c</members>
+        <members>Student__c.Pending_Fees_Amount__c</members>
+        <members>Student__c.Pending_Over_All_Amount__c</members>
+        <members>Student__c.Resources__c</members>
+        <members>Student__c.Roll_Number__c</members>
+        <members>Student__c.Section__c</members>
+        <members>Student__c.State__c</members>
+        <members>Student__c.Stream__c</members>
+        <members>Student__c.Student_Contact_No__c</members>
+        <members>Student__c.Student_Name__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Student__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Student__c</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Student__c-Registrar</members>
+        <members>Student__c-Student Layout</members>
+        <members>Student__c-Teacher</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Student__c.Registrar_Layout</members>
+        <members>Student__c.Teacher</members>
+        <name>RecordType</name>
     </types>
     <version>54.0</version>
 </Package>
