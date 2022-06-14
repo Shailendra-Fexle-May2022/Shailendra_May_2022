@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
 		<members>DreamWorld</members>
+		<members>HelloWorld</members>
 		<members>Registrar</members>
         <members>StudentQuery</members>
         <members>Teacher</members>
@@ -13,6 +14,7 @@
     </types>
     <types>
 		<members>Dream_World__c.Dream_World__c</members>
+		<members>Hello__c.world__c</members>
         <members>Student__c.Account_Number__c</members>
         <members>Student__c.Addhar_Number__c</members>
         <members>Student__c.Address__c</members>
@@ -56,12 +58,11 @@
         <name>CustomField</name>
     </types>
     <types>
+		<members>Dream_World__c</members>
+		<members>Hello__c</members>
         <members>Student__c</members>
-		<members>Account</members>
         <members>College__c</members>
-        <members>Contact</members>
         <members>Employee__c</members>
-        <members>Lead</members>
         <members>Pan_Card__c</members>
         <members>Student1__c</members>
         <members>StudentSubjects__c</members>
@@ -72,6 +73,7 @@
     </types>
     <types>
 		<members>Dream_World__c</members>
+		<members>Hello__c</members>
         <members>Student__c</members>
 		<members>College__c</members>
         <members>Employee__c</members>
