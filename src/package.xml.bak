@@ -3,6 +3,7 @@
     <types>
 		<members>DreamWorld</members>
 		<members>HelloWorld</members>
+		<members>DemoEven</members>
 		<members>Registrar</members>
         <members>StudentQuery</members>
         <members>Teacher</members>
@@ -60,6 +61,7 @@
     <types>
 		<members>Dream_World__c</members>
 		<members>Hello__c</members>
+		<members>DemoEven__c</members>
         <members>Student__c</members>
         <members>College__c</members>
         <members>Employee__c</members>
@@ -74,6 +76,7 @@
     <types>
 		<members>Dream_World__c</members>
 		<members>Hello__c</members>
+		<members>DemoEven__c</members>
         <members>Student__c</members>
 		<members>College__c</members>
         <members>Employee__c</members>
@@ -106,6 +109,14 @@
         <members>Student__c.Registrar_Layout</members>
         <members>Student__c.Teacher</members>
         <name>RecordType</name>
+    </types>
+	<types>
+        <members>EvenNumber</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>FlexiPage</name>
     </types>
     <version>54.0</version>
 </Package>
