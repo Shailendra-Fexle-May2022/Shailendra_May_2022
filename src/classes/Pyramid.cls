@@ -5,7 +5,7 @@ public class Pyramid
         for(integer i=1;i<=5;i++)
         {
             String s = '';
-            Integer a = 4;
+            String str = 'Hello';
             Integer b = 6;
             for(integer j=1;j<=9;j++)
               {
