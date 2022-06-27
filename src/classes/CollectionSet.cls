@@ -50,17 +50,17 @@ public with sharing class CollectionSet {
         
        // The set elements in strSet1 are copied from strSet
         Set<String> strSet = new Set<String>();
-		strSet.add('item1');
-		strSet.add('item2');
+	strSet.add('item1');
+	strSet.add('item2');
         System.debug(strSet);
-		Set<String> strSet1 = new Set<String>(strSet);
+	Set<String> strSet1 = new Set<String>(strSet);
         System.debug(strSet1);//{'item1''item2'}
         Set<String> strSet2 = new Set<String>{'Jaipur','Ajmer'};
         System.debug(strSet2.remove('udaipur')); // flase
         System.debug(strSet2.remove('Jaipur')); // true
         Set<String> myString = new Set<String>{'a','d'};
-		Set<String> sString = new Set<String>{'c'};
-		Set<String> rString = new Set<String>{'a', 'b', 'c'};
+	Set<String> sString = new Set<String>{'c'};
+	Set<String> rString = new Set<String>{'a', 'b', 'c'};
         Boolean result1;
         Boolean result2;
         result1 = myString.addAll(sString);
