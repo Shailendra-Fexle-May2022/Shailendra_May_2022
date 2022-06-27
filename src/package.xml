@@ -12,6 +12,13 @@
 		<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
 		<members>DataType</members>
+		<members>CollectionList</members>
+        <members>CollectionMap</members>
+        <members>CollectionSet</members>
+        <members>DateTimeAndString</members>
+        <members>DateType</members>
+        <members>PrimitiveData</members>
+        <members>StudentPercentage</members>
         <name>ApexClass</name>
     </types>
     <types>
