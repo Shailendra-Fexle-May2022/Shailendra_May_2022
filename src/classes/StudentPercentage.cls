@@ -5,6 +5,9 @@
  *  Revision Logs   :    V_1.0 - Created - 2022/06/26
  **/
 public with sharing class StudentPercentage {
+
+      static final Integer STUDENT_PERCENTAGE = 75;
+      static final Integer STUDENT_PERCENTAGE1 = 60;
     
      /**
       * Created By    :    Shailendra Sharma
@@ -12,9 +15,8 @@ public with sharing class StudentPercentage {
       * Params        :    List<Student__c> 
       * Return        :    Void
       **/
-      static final Integer STUDENT_PERCENTAGE = 75;
-      static final Integer STUDENT_PERCENTAGE1 = 60;
-    public static void display(){	
+     
+    public static void display() {	
         List<Student__c> per = [select Name,Percentage_Marks__c from Student__c];
         for(Student__c str:per)
         {
