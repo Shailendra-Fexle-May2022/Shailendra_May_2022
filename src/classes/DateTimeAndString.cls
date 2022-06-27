@@ -19,14 +19,14 @@ public with sharing class DateTimeAndString{
         System.debug(myDateTime = myDateTime.addMonths(5)); // 2022-11-24 17:18:16
         System.debug(myDateTime = DateTime.now()); //2022-06-24 13:13:01
         string year = '2022';
-		string month = '08';
-		string day = '10';
-		string hour = '15';
-		string minute = '40';
-		string second = '20';
-		string stringDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute +  ':' + second;
+	string month = '08';
+	string day = '10';
+	string hour = '15';
+	string minute = '40';
+	string second = '20';
+	string stringDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute +  ':' + second;
         Datetime myDate = Datetime.valueOf(stringDate);
-		System.debug(myDate); //2022-08-10 22:40:20
+	System.debug(myDate); //2022-08-10 22:40:20
 
         //String Methods
         String str = 'ShailendraSharma';
