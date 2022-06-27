@@ -37,7 +37,7 @@ public with sharing class DateType{
         
         //monthsBetween => Returns the difference between two Months
         Date firstDate = Date.newInstance(2022, 08, 2);
-		Date secondDate = Date.newInstance(2022, 12, 8);
+	Date secondDate = Date.newInstance(2022, 12, 8);
         Integer monthsBetween = firstDate.monthsBetween(secondDate);
         System.debug(monthsBetween); // 4
         
@@ -45,7 +45,7 @@ public with sharing class DateType{
         Integer days = Date.daysInMonth(2022,8);
         System.debug(days); // 31
              
-		String dayString =myDate2.format();
+	String dayString =myDate2.format();
         System.debug(dayString); // before(2022,09,10)=> after 9/10/2022
         System.debug(Date.isLeapYear(2022)); // false
     }
