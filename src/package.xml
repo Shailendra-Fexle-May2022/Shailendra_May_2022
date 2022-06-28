@@ -12,6 +12,8 @@
 		<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
 		<members>DataType</members>
+		<members>SafeNavigationOperator</members>
+        <members>TypesOfOperator</members>
         <name>ApexClass</name>
     </types>
     <types>
