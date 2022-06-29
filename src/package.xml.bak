@@ -11,17 +11,8 @@
         <members>LeftPascalClass</members>
 	<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
-	<members>DataType</members>
-	<members>Child</members>
-        <members>CustomerPurchaseOrder</members>
-        <members>EmployeePurchaseOrder</members>
-        <members>ProcessPurchaseOrder</members>
-        <members>PurchaseOrder</members>
-        <members>SuperClass</members>
-        <members>ThisKeyWord</members>
 	<members>SafeNavigationOperator</members>
         <members>TypesOfOperator</members>
-	<members>OperatorPrecedence</members>
 	<members>DataType</members>
 	<members>CollectionList</members>
         <members>CollectionMap</members>
