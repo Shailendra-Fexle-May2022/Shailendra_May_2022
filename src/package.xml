@@ -5,7 +5,7 @@
 	<members>HelloWorld</members>
 	<members>DemoEven</members>
 	<members>Registrar</members>
-    <members>StudentQuery</members>
+        <members>StudentQuery</members>
         <members>Teacher</members>
 	<members>DownTriangleStarPatternClass</members>
         <members>LeftPascalClass</members>
@@ -13,7 +13,7 @@
         <members>MyHelloWorld</members>
 	<members>SafeNavigationOperator</members>
         <members>TypesOfOperator</members>
-		<members>OperatorPrecedence</members>
+	<members>OperatorPrecedence</members>
 	<members>DataType</members>
 	<members>CollectionList</members>
         <members>CollectionMap</members>
