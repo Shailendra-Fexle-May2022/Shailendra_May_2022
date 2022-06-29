@@ -12,6 +12,13 @@
 		<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
 		<members>DataType</members>
+		<members>Child</members>
+        <members>CustomerPurchaseOrder</members>
+        <members>EmployeePurchaseOrder</members>
+        <members>ProcessPurchaseOrder</members>
+        <members>PurchaseOrder</members>
+        <members>SuperClass</members>
+        <members>ThisKeyWord</members>
         <name>ApexClass</name>
     </types>
     <types>
