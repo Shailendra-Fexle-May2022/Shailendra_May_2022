@@ -21,7 +21,7 @@
         <members>DateTimeAndString</members>
         <members>DateType</members>
         <members>PrimitiveData</members>
-		<members>StaticMethod</members>
+	<members>StaticMethod</members>
         <members>StaticPractical</members>
         <name>ApexClass</name>
     </types>
