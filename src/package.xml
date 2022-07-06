@@ -33,6 +33,25 @@
         <members>OverloadingClass</members>
         <members>Overriding</members>
         <members>ParentMarker</members>
+        <members>AcessClassOfInstanceOfClass</members>
+        <members>Child</members>
+        <members>Child2ClassOfInstanceOfClass</members>
+        <members>ChildClassOfInstanceOfClass</members>
+        <members>CustomerPurchaseOrder</members>
+        <members>EmployeePurchaseOrder</members>
+        <members>ProcessPurchaseOrder</members>
+        <members>PurchaseOrder</members>
+        <members>SuperClass</members>
+        <members>ThisKeyWord</members>
+        <members>AccessModifier</members>
+        <members>CallByReference</members>
+        <members>CallByValue</members>
+        <members>ChildMarker</members>
+        <members>ConditionalAndLoop</members>
+        <members>ConstructorOverloding</members>
+        <members>OverloadingClass</members>
+        <members>Overriding</members>
+        <members>ParentMarker</members>
         <name>ApexClass</name>
     </types>
     <types>
