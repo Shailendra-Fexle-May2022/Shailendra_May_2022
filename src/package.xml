@@ -52,6 +52,8 @@
         <members>OverloadingClass</members>
         <members>Overriding</members>
         <members>ParentMarker</members>
+		<members>Country</members>
+		<members>DmlInsertClass</members>
         <name>ApexClass</name>
     </types>
     <types>
