@@ -40,7 +40,7 @@ public with sharing class DmlInsertClass {
 
         SObject s =new  Account();
         s.put('Name', 'Account Example');
-        System.debug('Account Name after insertion: ' + s);//Account Name after insertion: Account:{Name=Account Example}
+        System.debug('Account Name: ' + s);//Account Name: Account:{Name=Account Example}
 
     }
      /*
