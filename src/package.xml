@@ -52,6 +52,10 @@
         <members>OverloadingClass</members>
         <members>Overriding</members>
         <members>ParentMarker</members>
+		<members>DMLOperation</members>
+        <members>ExceptionHandling</members>
+        <members>ParentChildRelationship</members>
+        <members>RelatingRecordsExternalID</members>
         <name>ApexClass</name>
     </types>
     <types>
