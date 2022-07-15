@@ -7,14 +7,14 @@
  
 public with sharing class Country {
    public static Map<String,Map<String,Map<String, List<String>>>> mapOfCountryCodeWithCountryName = new Map<String,Map<String,Map<String, List<String>>>>();
-    /**
+   
+   /**
       * Created By    :    Shailendra Sharma
       * Purpose       :    This method is used to create a MAP of different country with their states and cities.
       * Params        :    Map<String,Map<String,Map<String, List<String>>>>
       * Return        :    Void
-      **/
-      
-    public static void country_Map() {   
+      **/  
+    public static void country_Map() {
        // List of District of different state of India
         List<String> districtofRajasthanList= new List<String>{'Ajmer','Jaipur','Udaipur','Sikar'};
         List<String> districtofAssamList= new List<String>{'Cachar','Dhubri','Nagaon','Tinsukia'};
@@ -48,7 +48,6 @@ public with sharing class Country {
         Map<String, List<String>> stateWithDistrictMapOfUS = new Map<String, List<String>>{'NewYork'=>districtofNewYorkList,'Utah'=>districtofUtahList};
         //Map of State with Country of US
         Map<String,Map<String, List<String>>> usWithStateMap = new Map<String,Map<String, List<String>>>{'US'=>stateWithDistrictMapOfUS};
-        
         
         //Map of Different with Contry Code
         mapOfCountryCodeWithCountryName = new Map<String,Map<String,Map<String, List<String>>>>{'1' =>usWithStateMap, '7' =>russiaWithStateMap, '86' =>chinaWithStateMap,'91' =>indiaWithStateMap};
@@ -95,7 +94,6 @@ public with sharing class Country {
       * Return        :    Void
       **/
     public static void largestDistrictName(Integer lengthOfDistrict){ // lengthOfDistrict=10
-      
         List<String> addAllDistrictName = new List<String>();
         List<String> showDistrictName = new List<String>();
         for(String code:mapOfCountryCodeWithCountryName.keySet()) {
@@ -113,8 +111,7 @@ public with sharing class Country {
         }
             for(String district_Name:addAllDistrictName){
             if(district_Name.length()>=lengthOfDistrict){
-                showDistrictName.add(district_Name); 
-                
+                showDistrictName.add(district_Name);        
             }
         }
         System.debug('District Name of given lenght'+showDistrictName);
@@ -127,23 +124,21 @@ public with sharing class Country {
       * Argument      :    Sring
       * Return        :    Void
       **/
-    public static void countryCode_Method(String countryCode){
-        
+    public static void countryCode_Method(String countryCode){  
         if(mapOfCountryCodeWithCountryName.containsKey(countryCode)){
             System.debug('This map contains given country code');
         }
         else{
            System.debug('This map does not contain given country code');
-        } 
-     
-} 
+        }     
+   } 
+   
       /**
       * Created By    :    Shailendra Sharma
       * Purpose       :    This method is used to show available country name in this Map by passing vlue as a argument.
       * Argument      :    Sring
       * Return        :    Void
-      **/
-      
+      **/     
     public static void countryName_Method(String countryName){ // 
         Set<String> allCountryNameList = new Set<String>();
         for(String code:mapOfCountryCodeWithCountryName.keySet()){
@@ -156,16 +151,15 @@ public with sharing class Country {
         		}
         		else{
            			System.debug('This map does not contain given country Name'); 
-       			}         
-                   
+       			}                           
     }
+    
       /**
       * Created By    :    Shailendra Sharma
       * Purpose       :    This method is used to show available state name in this Map by passing vlue as a argument.
       * Argument      :    Sring
       * Return        :    Void
-      **/
-      
+      **/   
     public static void stateName_Method(String stateName){
       	Map<String,List<String>> countryNameWithStateMap = new Map<String,List<String>>();
         for(String code:mapOfCountryCodeWithCountryName.keySet()){
@@ -181,14 +175,14 @@ public with sharing class Country {
         		else{
            		System.debug('This map does not contain given state Name'); 
        			}       
-  }
+    }
+  
         /**
       * Created By    :    Shailendra Sharma
       * Purpose       :    This method is used to show available district name in this Map by passing vlue as a argument.
       * Argument      :    Sring
       * Return        :    Void
-      **/
-      
+      **/ 
     public static void districtName_Method(String districtName){
         List<String> passingDistrictNameList = new List<String>();
         for(String code:mapOfCountryCodeWithCountryName.keySet()) {
@@ -207,5 +201,5 @@ public with sharing class Country {
             else{
                System.debug('This map does not contain given District Name'); 
             }
-	} 
+     } 
 }
