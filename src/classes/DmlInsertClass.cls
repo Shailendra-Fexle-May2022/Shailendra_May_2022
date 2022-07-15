@@ -8,6 +8,7 @@ public with sharing class DmlInsertClass {
     static List<Contact> contacts = new List<Contact>();
     static List<Lead> leads = new List<Lead>();
     static List<Account> accounts = new List<Account>();
+    
     /*
     * Created By    :    Shailendra Sharma
     * Purpose       :    This method used to retrieve, insert and update the data.
@@ -15,11 +16,9 @@ public with sharing class DmlInsertClass {
     * Return        :    Void
     */
     public static void dml_Method() {
-
         Account a = new Account(Name='Account Example');
         insert a;
         System.debug('Account Name:: ' + a.Name);//Account Name:: Account Example
-
         Account b = [SELECT Name,Industry FROM Account WHERE Name='Account Example' LIMIT 1];
 
         // Write the old values the debug log before updating them.
@@ -30,26 +29,21 @@ public with sharing class DmlInsertClass {
         b.Name = 'Account of the Day';
         b.Industry = 'Technology';
         b.Phone = '9982876350';
-
-        // Persist the changes.
         update b;
-
         System.debug('Account Name after update: ' + b.Name); // Account Name after update: Account of the Day
         System.debug('Account Industry after update: ' + b.Industry);// Account Industry after update: Technology
         System.debug('Account Phone after update: ' + b.Phone);//Phone after update: 9982876350
-
         SObject s =new  Account();
         s.put('Name', 'Account Example');
         System.debug('Account Name: ' + s);//Account Name: Account:{Name=Account Example}
-
     }
+    
      /*
     * Created By    :    Shailendra Sharma
     * Purpose       :    This method used to retrieve the data.
     * Params        :    List<Account>,List<Lead>,List<Contact>
     * Return        :    Void
     */
-    
     public static void convertType(String phoneNumber) {
         List<List<SObject>> results = [FIND :phoneNumber IN Phone FIELDS RETURNING 
         Contact(Id, Phone, FirstName, LastName), 
