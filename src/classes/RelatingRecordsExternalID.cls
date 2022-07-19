@@ -15,7 +15,7 @@ public with sharing class RelatingRecordsExternalID {
     public static void relatingRecordsExternalID_Method() {
         Opportunity newOpportunity = new Opportunity(Name='OpportunityWithAccountInsert', StageName='Prospecting',
         CloseDate=Date.today().addDays(7));
-        Account accountReference = new Account(Name ='Gorge', MyExtID__c='SAP111111');
+        Account accountReference = new Account(Name ='Jon Henery', ExternalId__c='SAP111111');
         insert accountReference;
         // Add the account sObject to the opportunity.
         newOpportunity.AccountId = accountReference.Id;
@@ -30,14 +30,31 @@ public with sharing class RelatingRecordsExternalID {
     * Return        :    Void
     */
     public static void relatingRecordsExternalID_Method1() {
+       // Creating Parent and Child Records in a Single Statement Using Foreign Keys
         Opportunity newOpportunity = new Opportunity(Name='OpportunityWithAccountInsert', StageName='Prospecting',
         CloseDate=Date.today().addDays(7));
-        List<Account> accountReference = [Select Id, Name from Account where MyExtID__c='SAP111111'];                
-        // Add the account sObject to the opportunity.
-        newOpportunity.AccountId = accountReference[0].Id;
+        Account accountReference = new Account(ExternalId__c='SAP111123');                
+        // Add the account sObject to the opportunity.  
+        newOpportunity.AccountId = accountReference.Id;
+
+        // Create the Account object to insert.
+        Account parentAccount = new Account(Name = 'Gorge Poul', ExternalId__c='SAP111123' );
+
         // Create the opportunity.
-        Database.SaveResult results = Database.insert(newOpportunity);
+        Database.SaveResult []results = Database.insert(new Sobject[]{parentAccount, newOpportunity});
         System.debug(results);
+        for(Database.SaveResult sr : results){
+            if(sr.isSuccess()){
+                System.debug('The Id of sucessfully inserted record is::'+sr.getId());
+            }
+            else{
+                for(Database.Error err : sr.getErrors()){
+                    System.debug('The following error has occured:');
+                    System.debug(err.getStatusCode() +'::'+ err.getMessage());
+                    System.debug('The field affected by this error is:'+ err.getFields());
+                }
+            }
+        }
     }
      /*
     * Created By    :    Shailendra Sharma
