@@ -7,11 +7,11 @@
         <members>Registrar</members>
         <members>StudentQuery</members>
         <members>Teacher</members>
-	      <members>DownTriangleStarPatternClass</members>
+	<members>DownTriangleStarPatternClass</members>
         <members>LeftPascalClass</members>
-	      <members>HelloWorldTestClass</members>
+	<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
-	      <members>SafeNavigationOperator</members>
+	<members>SafeNavigationOperator</members>
         <members>TypesOfOperator</members>
         <members>OperatorPrecedence</members>
         <members>DataType</members>
@@ -21,7 +21,7 @@
         <members>DateTimeAndString</members>
         <members>DateType</members>
         <members>PrimitiveData</members>
-	      <members>StaticMethod</members>
+	<members>StaticMethod</members>
         <members>StaticPractical</members>
         <members>StudentPercentage</members>
         <members>AccessModifier</members>
@@ -57,7 +57,7 @@
         <members>DataBaseOperation</members>
         <members>RelatingRecordsExternalID</members>
         <members>Country</members>
-	      <members>DmlInsertClass</members>
+	<members>DmlInsertClass</members>
         <name>ApexClass</name>
     </types>
     <types>
