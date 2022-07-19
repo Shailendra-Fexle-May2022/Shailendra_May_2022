@@ -7,11 +7,11 @@
         <members>Registrar</members>
         <members>StudentQuery</members>
         <members>Teacher</members>
-	      <members>DownTriangleStarPatternClass</members>
+	<members>DownTriangleStarPatternClass</members>
         <members>LeftPascalClass</members>
-	      <members>HelloWorldTestClass</members>
+	<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
-	       <members>SafeNavigationOperator</members>
+	<members>SafeNavigationOperator</members>
         <members>TypesOfOperator</members>
         <members>OperatorPrecedence</members>
         <members>DataType</members>
@@ -21,7 +21,7 @@
         <members>DateTimeAndString</members>
         <members>DateType</members>
         <members>PrimitiveData</members>
-	       <members>StaticMethod</members>
+	<members>StaticMethod</members>
         <members>StaticPractical</members>
         <members>StudentPercentage</members>
         <members>AccessModifier</members>
@@ -52,7 +52,7 @@
         <members>OverloadingClass</members>
         <members>Overriding</members>
         <members>ParentMarker</members>
-		<members>DMLOperation</members>
+	<members>DMLOperation</members>
         <members>ExceptionHandling</members>
         <members>DataBaseOperation</members>
         <members>RelatingRecordsExternalID</members>
@@ -105,7 +105,7 @@
         <members>Student__c.Stream__c</members>
         <members>Student__c.Student_Contact_No__c</members>
         <members>Student__c.Student_Name__c</members>
-	      <members>Book__c.Price__c</members>
+        <members>Book__c.Price__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -121,7 +121,7 @@
         <members>Subject__c</members>
         <members>Teacher__c</members>
         <members>Year_Of_Class__c</members>
-	      <members>Book__c</members>
+        <members>Book__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -143,7 +143,7 @@
         <members>Student__c-Registrar</members>
         <members>Student__c-Student Layout</members>
         <members>Student__c-Teacher</members>
-	      <members>Account-Account Layout</members>
+        <members>Account-Account Layout</members>
         <members>College__c-College Layout</members>
         <members>Contact-Contact Layout</members>
         <members>Employee__c-Employee Layout</members>
