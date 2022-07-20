@@ -107,10 +107,6 @@
         <name>CustomField</name>
     </types>
     <types>
-		<members>Company__c</members>
-		<members>School__c</members>
-		<members>SoqlQueryTest1__c</members>
-		<members>SoqlQueryTest2__c</members>
 		<members>Country__c</members>
         <members>District__c</members>
         <members>State__c</members>
@@ -130,10 +126,6 @@
         <name>CustomObject</name>
     </types>
     <types>
-		<members>Company__c</members>
-		<members>School__c</members>
-		<members>SoqlQueryTest1__c</members>
-		<members>SoqlQueryTest2__c</members>
 		<members>Country__c</members>
         <members>District__c</members>
         <members>State__c</members>
