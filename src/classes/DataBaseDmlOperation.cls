@@ -26,7 +26,7 @@ public with sharing class DataBaseDmlOperation {
         for (Database.SaveResult sr : srList) {
             if (sr.isSuccess()) {
                 // Operation was successful, so get the ID of the record that was processed
-                System.debug('Successfully inserted account. Account ID: ' + sr.getId());//
+                System.debug('Successfully inserted account. Account ID: ' + sr.getId());//Successfully inserted account. Account ID: 0015i00000JDkJxAAL, Successfully inserted account. Account ID: 0015i00000JDkJyAAL
             }
             else {
                 // Operation failed, so get all errors                
@@ -38,7 +38,9 @@ public with sharing class DataBaseDmlOperation {
             }
         }
         // Create two accounts, one of which is missing a required field
-        List<Contact> conList = new List<Contact>{new Contact(FirstName='Jack',LastName = 'Goms'),new Contact()};
+        List<Contact> conList = new List<Contact>();
+       	conList.add(new Contact(FirstName='Jack',LastName = 'Goms'));
+        conList.add(new Contact());
             Database.SaveResult[] crList = Database.insert(conList , false);
             //Database.SaveResult[] crList  = Database.insert(conList , true);//If we use true instead of false
             //System.DmlException: Insert failed. First exception on row 1; 
@@ -48,14 +50,14 @@ public with sharing class DataBaseDmlOperation {
         for (Database.SaveResult sr : crList) {
             if (sr.isSuccess()) {
                 // Operation was successful, so get the ID of the record that was processed
-                System.debug('Successfully inserted account. Account ID: ' + sr.getId()); //Successfully inserted account. Account ID: 0015i00000JBrPiAAL
+                System.debug('Successfully inserted Contact. Contact ID: ' + sr.getId()); //Successfully inserted Contact. Contact ID: 0015i00000JBrPiAAL
             }
             else {
                 // Operation failed, so get all errors                
                 for(Database.Error err : sr.getErrors()) {
                     System.debug('The following error has occurred.');                    
                     System.debug(err.getStatusCode() + ': ' + err.getMessage()); //REQUIRED_FIELD_MISSING: Required fields are missing: [Name]
-                    System.debug('Account fields that affected this error: ' + err.getFields()); //Account fields that affected this error: (Name)
+                    System.debug('Contact fields that affected this error: ' + err.getFields()); //Contact fields that affected this error: (Name)
                 }
             }
         }
@@ -83,14 +85,40 @@ public with sharing class DataBaseDmlOperation {
         for (Database.SaveResult sr : srList) {
             if (sr.isSuccess()) {
                 // Operation was successful, so get the ID of the record that was processed
-                System.debug('Successfully updatedted account. Contact ID: ' + sr.getId());//Successfully inserted account. Contact ID: 0035i000006djebAAA
+                System.debug('Successfully updatedted contact. Contact ID: ' + sr.getId());//Successfully updatedted contact. Contact ID: 0035i000006djebAAA
             }
             else {
                 // Operation failed, so get all errors                
                 for(Database.Error err : sr.getErrors()) {
-                    System.debug('The following error has occurred.');                    
+                    System.debug('The following error has occurred.');                   
                     System.debug(err.getStatusCode() + ': ' + err.getMessage());
-                    System.debug('Account fields that affected this error: ' + err.getFields());
+                    System.debug('Contact fields that affected this error: ' + err.getFields());
+                }
+            }
+        }
+        //Showing error message duing update of data.
+        List<Contact> contList1 = new List<Contact>();
+            for(Contact con :[SELECT Id,Phone,LastName from Contact]){
+                con.LastName = ' '; 
+                con.Phone = '67427635';
+                con.Email= 'admo@gmail.com';
+                contList1.add(con);
+            }
+        // Bulk update all Contact recods with one call
+        Database.SaveResult[] srList1 = Database.update(contList1 , false);
+
+        // Iterate through each returned result
+        for (Database.SaveResult sr : srList1) {
+            if (sr.isSuccess()) {
+                // Operation was successful, so get the ID of the record that was processed
+                System.debug('Successfully updatedted contact. Contact ID: ' + sr.getId());
+            }
+            else {
+                // Operation failed, so get all errors                
+                for(Database.Error err : sr.getErrors()) {
+                    System.debug('The following error has occurred.');//The following error has occurred.                    
+                    System.debug(err.getStatusCode() + ': ' + err.getMessage());//Contact fields that affected this error: (LastName)
+                    System.debug('Contact fields that affected this error: ' + err.getFields());//Contact fields that affected this error: (LastName)
                 }
             }
         }
@@ -105,7 +133,7 @@ public with sharing class DataBaseDmlOperation {
     public  static void dataBaseOperation_DeleteMethod(){
         //Delete DataBaseOperation
         // Query the accounts to delete
-        Account[] acctList2 = [SELECT Id from Account WHERE Name LIKE 'James'];//Successfully deleted account with ID: 0015i00000JBrOZAA1, Successfully deleted account with ID: 0015i00000JBrOjAAL
+        Account[] acctList2 = [SELECT Id from Account WHERE Name LIKE 'James'];
         // Delete the accounts
         Database.DeleteResult[] drList = Database.delete(acctList2, false);
 
@@ -113,7 +141,7 @@ public with sharing class DataBaseDmlOperation {
         for(Database.DeleteResult dr : drList) {
             if (dr.isSuccess()) {
                 // Operation was successful, so get the ID of the record that was processed
-                System.debug('Successfully deleted account with ID: ' + dr.getId());
+                System.debug('Successfully deleted account with ID: ' + dr.getId());////Successfully deleted account with ID: 0015i00000JBrOZAA1
             }
             else {
                 // Operation failed, so get all errors                

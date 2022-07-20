@@ -78,7 +78,7 @@ public with sharing class ExceptionHandling {
             // we don't have a teacher with name='XYZ'.
             // The list will just be empty.
             List<Teacher__c> teacherList = [SELECT Name FROM Teacher__c WHERE Name = 'XYZ'];
-            System.debug(teacherList.size());
+            System.debug(teacherList.size());//0
             
             // However, this statement causes a QueryException because 
             // we're assiging the return value to a Teacher__c object
