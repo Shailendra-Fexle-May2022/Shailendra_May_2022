@@ -21,18 +21,8 @@ public with sharing class DMLOperation {
             }
             // Not a good practice since governor limits might be hit.
             //update badCon;
-        }
+        }    
         // Level 2
-        List<Contact> conList1 = [Select Department , Description from Contact];
-        for(Contact badCon1 : conList1) {
-            if (badCon1.Department == 'Finance') {
-                badCon1.Description = 'New description';
-            }
-        }
-            // Not a good practice since governor limits might be hit.
-            //update badCon1;
-            
-        // Level 3
             List<Contact> upDateList = new  List<Contact>();
             List<Contact> conList2 = [Select Department , Description from Contact];
         for(Contact badCon2 : conList2) {
@@ -49,7 +39,6 @@ public with sharing class DMLOperation {
                 upDateList.add(badCon3);
         }
         update upDateList2; //This results in one call for the entire list
-        
         // INSERT
         Account insertAcc = new Account();
         insertAcc.Name = 'Basil';
@@ -57,7 +46,6 @@ public with sharing class DMLOperation {
         insertAcc.NumberOfEmployees = 150; 
         insertAcc.Phone ='9987543745';
         insert insertAcc;
-
         //  UPSERT
         List<Account> combine = new List<Account>();
         Account a = new Account(Name='Tech-Trash-Four', Phone = '232323');
@@ -66,7 +54,6 @@ public with sharing class DMLOperation {
         combine.add(a);
         combine.add(b);
         upsert combine;
-    
         //  MERGE
         Account acc4 = [SELECT Name, Phone FROM Account WHERE Name='Training Coordinator2' Limit 1];
         // Accessing a existing record which have contact details
@@ -79,8 +66,7 @@ public with sharing class DMLOperation {
         delete delAcc;
     
         //  UNDELETE RECORDS
-       List<Account> deletedAcc = [SELECT Id,Name,Phone FROM Account WHERE Name = 'Gorge' ALL ROWS];
-       undelete deletedAcc;
-       
+        List<Account> deletedAcc = [SELECT Id,Name,Phone FROM Account WHERE Name = 'Gorge' ALL ROWS];
+        undelete deletedAcc;   
     }
 }
