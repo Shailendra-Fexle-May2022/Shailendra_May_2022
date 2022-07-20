@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
 		<members>CountryMap</members>
+		<members>ParentChildRelationship</members>
         <members>DreamWorld</members>
         <members>HelloWorld</members>
         <members>DemoEven</members>
