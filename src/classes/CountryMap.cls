@@ -5,7 +5,7 @@
  *  Revision Logs    :    V_1.0 - Created -  2022/7/17
  */
 public with sharing class CountryMap {
-    static Map<String,Map<String, List<String>>> countryWithCountryNameMap = new Map<String,Map<String, List<String>>>();
+    static Map<String,Map<String, List<String>>> mapOfCountryWithStateNameAndDistrictName = new Map<String,Map<String, List<String>>>();
 
     /*
     * Created By    :    Shailendra Sharma
@@ -19,50 +19,50 @@ public with sharing class CountryMap {
         List<District__c> districtNameList =[Select Name, State__r.Name, State__r.Country__r.Name From District__c];
         List<State__c> stateNameList = [Select Name, Country__r.Name From State__c];
         List<Country__c> countryNameList = [Select Name From Country__c];
-        Map<String, List<String>> stateNameWithCountryMap = new  Map<String, List<String>>();
+        Map<String, List<String>> CountryWithStateNameMap = new  Map<String, List<String>>();
         for(Country__c cont:countryNameList){
             List<String> nameofState = new List<String>();
             for(State__c states : stateNameList ){ 
                 if(states.Country__r.Name== cont.Name){
                     nameofState.add(states.Name); 
-                    if(!stateNameWithCountryMap.containskey(cont.Name)){
-                        stateNameWithCountryMap.put(cont.Name,nameofState);  
+                    if(!CountryWithStateNameMap.containskey(cont.Name)){
+                        CountryWithStateNameMap.put(cont.Name,nameofState);  
                     }
                 } 
                 else{
-                     stateNameWithCountryMap.values().add(nameofState);
+                     CountryWithStateNameMap.values().add(nameofState);
                 }
             }     
         }
-        System.debug('Map of Country with States::'+ stateNameWithCountryMap);
-                
-        Map<String,List<String>> districtNameWithStateList = new Map<String,List<String>>();
+        System.debug('Map of Country with States::'+ CountryWithStateNameMap);
+        //Map of Country with States::{China=(Shanghai, Beijing), India=(Bihar, Assam, Rajasthan, Gujarat), Russia=(Adygea', Chechnya), US=(Washington, Utah, NewYork)}        
+        Map<String,List<String>> StateWithDistrictNameMap = new Map<String,List<String>>();
         for(State__c states :stateNameList ){
             List<String> nameOfDistrict = new List<String>();
             for(District__c districts:districtNameList){
                 if(districts.State__r.Name == states.Name){
                     nameOfDistrict.add(districts.Name);
-                    if(!districtNameWithStateList.containsKey(states.Name)){
-                        districtNameWithStateList.put(states.Name,nameOfDistrict);        
+                    if(!StateWithDistrictNameMap.containsKey(states.Name)){
+                        StateWithDistrictNameMap.put(states.Name,nameOfDistrict);        
                         }
                     else{
-                       districtNameWithStateList.values().add(nameOfDistrict);
+                       StateWithDistrictNameMap.values().add(nameOfDistrict);
                     }
                 }
             }
         }
-        System.debug('Map of States with Diatricts::'+districtNameWithStateList); 
-        for(String countryName :stateNameWithCountryMap.keySet()){
-             if(!countryWithCountryNameMap.containsKey(countryName)){
-                countryWithCountryNameMap.put(countryName, new Map<String, List<String>>());
-                 if(countryWithCountryNameMap.containsKey(countryName)){
-                     for(String stateName:stateNameWithCountryMap.get(countryName)){  
-                       countryWithCountryNameMap.get(countryName).put(stateName,new List<String>());
-                         for(String districtName:districtNameWithStateList.get(stateName)){
+       
+        for(String countryName :CountryWithStateNameMap.keySet()){
+             if(!mapOfCountryWithStateNameAndDistrictName.containsKey(countryName)){
+                mapOfCountryWithStateNameAndDistrictName.put(countryName, new Map<String, List<String>>());
+                 if(mapOfCountryWithStateNameAndDistrictName.containsKey(countryName)){
+                     for(String stateName:CountryWithStateNameMap.get(countryName)){  
+                       mapOfCountryWithStateNameAndDistrictName.get(countryName).put(stateName,new List<String>());
+                         for(String districtName:StateWithDistrictNameMap.get(stateName)){
                               List<String> districtList = new List<String>();
-                            if(countryWithCountryNameMap.get(countryName).containsKey(stateName)){
+                            if(mapOfCountryWithStateNameAndDistrictName.get(countryName).containsKey(stateName)){
                                 districtList.add(districtName);
-                                countryWithCountryNameMap.get(countryName).get(stateName).addAll(districtList);
+                                mapOfCountryWithStateNameAndDistrictName.get(countryName).get(stateName).addAll(districtList);
                             }        
                         }    
                     }
@@ -78,13 +78,13 @@ public with sharing class CountryMap {
                 districtStateCountryNameList.add(dis.State__r.Country__r.Name);
                 districtStateCountryNameList.add(dis.State__r.Name);
                 districtStateCountryNameList.add(dis.Name);
-                System.debug(districtStateCountryNameList);                   
+                //System.debug(districtStateCountryNameList);                   
                 System.debug('Name of Country ,State, District start with passing alpahbat in constructor::'+districtStateCountryNameList);
-                                    //Name of Country ,State, District start with passing alpahbat in constructor::(US, Utah, Uinta)
+               //Name of Country ,State, District start with passing alpahbat in constructor::(US, Utah, Uinta)
             } 
-            }Catch(Exception error)
+            }Catch(QueryException error)
                 {
-                System.debug('There is no such type of country satrt with::'+firstLetter);
+                System.debug('There is no such type of country satrt with::'+ error.getMessage());
                 }
         
             // Find the name of district which have length by using passing integer in constructor
@@ -145,7 +145,7 @@ public with sharing class CountryMap {
     * Argument      :    String
     * Return        :    Void
     */
-    public static void countryWraperMethod(String nameOfCountry){
+    public static void wraperJsonMethod(String nameOfCountry){
         Country objCountry = new Country();
         objCountry.countryName = nameOfCountry;
         List<AggregateResult> stateResult = [Select COUNT(Name)TotalStates From State__c Where Country__r.Name =: nameOfCountry Group By Country__r.Name];
@@ -153,12 +153,12 @@ public with sharing class CountryMap {
         List<AggregateResult> districtResult = [Select COUNT(Id)TotalDistricts From District__c Where State__r.Country__r.Name =: nameOfCountry Group By State__r.Country__r.Name];
         objCountry.Total_Number_Of_Districts = (Integer)districtResult[0].get('TotalDistricts');
         List<States> statesList = new List<States>();
-        for(String state :countryWithCountryNameMap.get(nameOfCountry).keySet()){
+        for(String state :mapOfCountryWithStateNameAndDistrictName.get(nameOfCountry).keySet()){
                 States objState = new States();
                 objstate.stateName = state;
                 statesList.add(objState);
                 List<Districts> districtsList = new List<Districts>();
-                for(String nameOfDistrict:countryWithCountryNameMap.get(nameOfCountry).get(state)){
+                for(String nameOfDistrict:mapOfCountryWithStateNameAndDistrictName.get(nameOfCountry).get(state)){
                         Districts objDistricts = new Districts();
                         objDistricts.districtName = nameOfDistrict;
                         districtsList.add(objDistricts);
@@ -166,9 +166,8 @@ public with sharing class CountryMap {
                 objstate.districts = districtsList; 
         }
         objCountry.states = statesList ;
-        //System.debug('Wrapper Country Class'+objCountry);
         String jsonFormat = Json.serialize(objCountry);
-       // System.debug('Jason format of Country Map::'+jsonFormat); 
+        System.debug('Jason format of Country Map::'+jsonFormat); 
         Country__c contObj =[Select Name,Hieararchy__c From Country__c Where Name =:nameOfCountry];
         contObj.Hieararchy__c= jsonFormat;
         update contObj;     
