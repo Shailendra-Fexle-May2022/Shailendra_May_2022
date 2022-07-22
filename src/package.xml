@@ -108,6 +108,7 @@
         <members>Student__c.Student_Contact_No__c</members>
         <members>Student__c.Student_Name__c</members>
         <members>Book__c.Price__c</members>
+	<members>Account.ExternalId__c</members>
         <name>CustomField</name>
     </types>
     <types>
