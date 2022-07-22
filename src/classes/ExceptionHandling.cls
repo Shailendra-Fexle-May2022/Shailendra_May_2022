@@ -32,14 +32,11 @@ public with sharing class ExceptionHandling {
             //An unexpected error has occurred: Insert failed. First exception on row 0; first error: DUPLICATES_DETECTED, Use one of these records?: []
         }catch(Exception a){
             System.debug('An unexpected error has occurred: ' + a.getMessage());
-            //An unexpected error has occurred: Insert failed. First exception on row 0; first error: DUPLICATES_DETECTED, Use one of these records?: []
         }
         /*}catch(Exception a){
             System.debug('An unexpected error has occurred: ' + a.getMessage());
-            //An unexpected error has occurred: Insert failed. First exception on row 0; first error: DUPLICATES_DETECTED, Use one of these records?: []
         }catch(DmlException d){ //(Exception type already caught: System.DmlException)
             System.debug('An unexpected error has occurred: ' + d.getMessage());
-            //An unexpected error has occurred: Insert failed. First exception on row 0; first error: DUPLICATES_DETECTED, Use one of these records?: []
         }*/
         try {
             Account acct = new Account(Name='Jackson Account');
