@@ -7,14 +7,13 @@
 public with sharing class CountryMap {
     static Map<String,Map<String, List<String>>> mapOfCountryWithStateNameAndDistrictName = new Map<String,Map<String, List<String>>>();
 
-    /*
+     /**
     * Created By    :    Shailendra Sharma
     * Purpose       :    This constructor is used to fill the Map and 
-                         show the combination of Country, State,and District with passing alphabet in constructor.
-    * Argument      :    String, Integer
+    * Argument      :    Void
     * Return        :    Void   
-    */
-    public void CountryMap(String firstLetter,Integer districtWordLength){ // ('U',10)
+    **/
+    public CountryMap(){ 
         // Filling the map 
         List<District__c> districtNameList =[Select Name, State__r.Name, State__r.Country__r.Name From District__c];
         List<State__c> stateNameList = [Select Name, Country__r.Name From State__c];
@@ -34,8 +33,8 @@ public with sharing class CountryMap {
                 }
             }     
         }
-        System.debug('Map of Country with States::'+ CountryWithStateNameMap);
-        //Map of Country with States::{China=(Shanghai, Beijing), India=(Bihar, Assam, Rajasthan, Gujarat), Russia=(Adygea', Chechnya), US=(Washington, Utah, NewYork)}        
+        //System.debug('Map of Country with States::'+ CountryWithStateNameMap);
+        //Map of Country with States::{China=(Shanghai, Beijing), India=(Bihar, Assam, Rajasthan, Gujarat), Russia=(Adygea', Chechnya), US=(Washington, Utah, NewYork)}       
         Map<String,List<String>> StateWithDistrictNameMap = new Map<String,List<String>>();
         for(State__c states :stateNameList ){
             List<String> nameOfDistrict = new List<String>();
@@ -51,7 +50,6 @@ public with sharing class CountryMap {
                 }
             }
         }
-       
         for(String countryName :CountryWithStateNameMap.keySet()){
              if(!mapOfCountryWithStateNameAndDistrictName.containsKey(countryName)){
                 mapOfCountryWithStateNameAndDistrictName.put(countryName, new Map<String, List<String>>());
@@ -69,8 +67,21 @@ public with sharing class CountryMap {
                 }
             }
         }
-        // Find the combination of Country, State,and District by passing the staring alphabet in constructor.
-        try{
+        System.debug('Map of Countries::'+mapOfCountryWithStateNameAndDistrictName); 
+        //Map of Countries::{China={Beijing=(Yunnan, Shandong), Shanghai=(Jiangsu, Anhui)},
+        //India={Assam=(Dhubri, Tinsukia, Nagaon), Bihar=(Saran, Aurangabad, Patna), Gujarat=(Ahmadabad, Vadodara, Surat), Rajasthan=(Jaipur, Udiapur, Ajmer)}, 
+        //Russia={Adygea'=(Giaginsky, Shovgenovsky), Chechnya=(Naursky, Achkhoy)}, 
+        //US={NewYork=(Manhattan, Bronx), Utah=(ParkCity, Uinta), Washington=(Snohomish, King)}}
+    }
+    
+     /*
+    * Created By    :    Shailendra Sharma
+    * Purpose       :    This Method is used to show the combination of Country, State,and District with passing alphabet in Method and aggregate function.
+    * Argument      :    String, Integer
+    * Return        :    Void   
+    */
+    public static void  combinationAndAggregateMethod(String firstLetter,Integer districtWordLength){ // ('U',10)
+    // Find the combination of Country, State,and District by passing the staring alphabet in Method.
             List<String> districtStateCountryNameList = new List<String>();
             for(District__c dis:[SELECT Name,State__r.Name, State__r.Country__r.Name from District__c 
                                 WHERE Name LIKE: firstLetter+'%' AND State__r.Name LIKE: firstLetter+'%' 
@@ -82,10 +93,6 @@ public with sharing class CountryMap {
                 System.debug('Name of Country ,State, District start with passing alpahbat in constructor::'+districtStateCountryNameList);
                //Name of Country ,State, District start with passing alpahbat in constructor::(US, Utah, Uinta)
             } 
-            }Catch(QueryException error)
-                {
-                System.debug('There is no such type of country satrt with::'+ error.getMessage());
-                }
         
             // Find the name of district which have length by using passing integer in constructor
             List<String> allDistrictNameList = new List<String>();
@@ -123,7 +130,7 @@ public with sharing class CountryMap {
             if(!totalNoOfDistrictsAndStatesList.isEmpty()){
                 update totalNoOfDistrictsAndStatesList; 
             }
-    }  
+    } 
      // Wrapper Classes         
     public class Country{
         public String countryName{get; set;}
@@ -145,7 +152,7 @@ public with sharing class CountryMap {
     * Argument      :    String
     * Return        :    Void
     */
-    public static void wraperJsonMethod(String nameOfCountry){
+    public static void wrapperJsonMethod(String nameOfCountry){
         Country objCountry = new Country();
         objCountry.countryName = nameOfCountry;
         List<AggregateResult> stateResult = [Select COUNT(Name)TotalStates From State__c Where Country__r.Name =: nameOfCountry Group By Country__r.Name];
