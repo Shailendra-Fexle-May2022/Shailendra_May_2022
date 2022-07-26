@@ -8,4 +8,14 @@
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <externalId>true</externalId>
+        <label>ExternalId</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
