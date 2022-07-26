@@ -135,8 +135,8 @@ public with sharing class CountryMap {
     public class Country{
         public String countryName{get; set;}
         public List<States> states{get; set;}
-        public Integer Total_Number_Of_States{get; set;}
-        public Integer Total_Number_Of_Districts{get; set;}
+        public Integer total_Number_Of_States{get; set;}
+        public Integer total_Number_Of_Districts{get; set;}
     }    
     public class States{
         Public List<Districts> districts{get; set;}
@@ -156,9 +156,9 @@ public with sharing class CountryMap {
         Country objCountry = new Country();
         objCountry.countryName = nameOfCountry;
         List<AggregateResult> stateResult = [Select COUNT(Name)TotalStates From State__c Where Country__r.Name =: nameOfCountry Group By Country__r.Name];
-        objCountry.Total_Number_Of_States = (Integer)stateResult[0].get('TotalStates');
+        objCountry.total_Number_Of_States = (Integer)stateResult[0].get('TotalStates');
         List<AggregateResult> districtResult = [Select COUNT(Id)TotalDistricts From District__c Where State__r.Country__r.Name =: nameOfCountry Group By State__r.Country__r.Name];
-        objCountry.Total_Number_Of_Districts = (Integer)districtResult[0].get('TotalDistricts');
+        objCountry.total_Number_Of_Districts = (Integer)districtResult[0].get('TotalDistricts');
         List<States> statesList = new List<States>();
         for(String state :mapOfCountryWithStateNameAndDistrictName.get(nameOfCountry).keySet()){
                 States objState = new States();
