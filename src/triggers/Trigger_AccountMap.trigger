@@ -4,8 +4,7 @@
  *  Created Date     :    2022/07/21
  *  Revision Logs    :    V_1.0 - Created - 2022/07/21
  **/ 
-trigger Trigger_Account1 on Account (Before Insert,Before Update,Before Delete,After Insert,After Update,After Delete,After UnDelete){
-    
+trigger Trigger_AccountMap on Account (Before Insert,Before Update,Before Delete,After Insert,After Update,After Delete,After UnDelete){
     if(Trigger.isBefore){
         if(Trigger.isInsert){
             system.debug('Check Insert List ::: Trigger.newMap ' + Trigger.newMap);//Check Insert List ::: Trigger.newMap null

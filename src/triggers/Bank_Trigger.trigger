@@ -7,13 +7,18 @@
 trigger Bank_Trigger on Bank__c (Before insert,After Insert,After Update) {
     If(Trigger.isBefore){
         if(Trigger.isInsert){
-        Bank__c bank = Trigger.New[0];
-            bank.Account_Number__c = 'SV'+bank.Account_Number__c;
+            BankTriggerHelper.insertPrefixInAccountNumber(Trigger.New);
         } 
+		if(Trigger.isUpdate){
+            BankTriggerHelper.updateAccountNumberMethod(Trigger.New, Trigger.oldMap);
+        }        
     }
-    If(Trigger.isAfter && Trigger.isInsert){
-            BankTriggerHandler.sendEmailNotification(Trigger.New);
-        }else if(Trigger.isUpdate){
-            BankTriggerHandler.sendEmailUpdateNotification(Trigger.New);
-     }
+    If(Trigger.isAfter){
+        if(Trigger.isInsert){
+            BankTriggerHelper.sendEmailNotification(Trigger.New);
+        }
+        if(Trigger.isUpdate){
+            BankTriggerHelper.sendEmailUpdateNotification(Trigger.New, Trigger.oldMap);
+        }
+    }
 }

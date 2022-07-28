@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-		<members>BankTriggerHelper</members>
+	<members>BankTriggerHandler</members>
         <members>DreamWorld</members>
         <members>HelloWorld</members>
         <members>DemoEven</members>
         <members>Registrar</members>
         <members>StudentQuery</members>
         <members>Teacher</members>
-		<members>DownTriangleStarPatternClass</members>
+	<members>DownTriangleStarPatternClass</members>
         <members>LeftPascalClass</members>
-		<members>HelloWorldTestClass</members>
+	<members>HelloWorldTestClass</members>
         <members>MyHelloWorld</members>
-		<members>SafeNavigationOperator</members>
+	<members>SafeNavigationOperator</members>
         <members>TypesOfOperator</members>
         <members>OperatorPrecedence</members>
         <members>DataType</members>
@@ -22,7 +22,7 @@
         <members>DateTimeAndString</members>
         <members>DateType</members>
         <members>PrimitiveData</members>
-		<members>StaticMethod</members>
+	<members>StaticMethod</members>
         <members>StaticPractical</members>
         <members>StudentPercentage</members>
         <members>AccessModifier</members>
@@ -58,15 +58,15 @@
         <members>DataBaseDmlOperation</members>
         <members>RelatingRecordsExternalID</members>
         <members>Country</members>
-		<members>DmlInsertClass</members>
+	<members>DmlInsertClass</members>
         <name>ApexClass</name>
     </types>
     <types>
-		<members>Bank_Trigger</members>
-		<members>Trigger_AccountMap</members>
-		<members>Trigger_Account_Assignment</members>
-		<members>Trigger_Practice</members>
         <members>HelloWorldTrigger</members>
+	<members>Bank_Trigger</members>
+        <members>Trigger_Account</members>
+        <members>Trigger_Account1</members>
+        <members>Trigger_Account2</members>
         <name>ApexTrigger</name>
     </types>
     <types>
@@ -113,12 +113,10 @@
         <members>Student__c.Student_Contact_No__c</members>
         <members>Student__c.Student_Name__c</members>
         <members>Book__c.Price__c</members>
-		<members>Account.ExternalId__c</members>
+	<members>Account.ExternalId__c</members>
         <name>CustomField</name>
     </types>
     <types>
-		<members>Bank__c</members>
-		<members>TriggerPractice__c</members>
         <members>Dream_World__c</members>
         <members>Hello__c</members>
         <members>DemoEven__c</members>
@@ -135,9 +133,8 @@
         <name>CustomObject</name>
     </types>
     <types>
-		<members>Bank__c</members>
-		<members>TriggerPractice__c</members>
-		<members>Dream_World__c</members>
+	<members>Bank__c</members>
+        <members>Dream_World__c</members>
         <members>Hello__c</members>
         <members>DemoEven__c</members>
         <members>Student__c</members>
