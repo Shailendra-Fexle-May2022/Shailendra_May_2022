@@ -19,8 +19,11 @@ public with sharing class BankTriggerHelper {
                 b.Account_Number__c = String.valueOf(accNumber);
             }
             if(b.Account_Number__c != null){
-                if(b.Account_Type__c == 'Saving'){
+                if(b.Account_Type__c == 'Saving Account'){
                     b.Account_Number__c = 'SV' +'-'+ b.Account_Number__c;
+                } 
+                else if(b.Account_Type__c == 'Fixed Deposit'){
+                    	b.Account_Number__c = 'FD' +'-'+ b.Account_Number__c;
                 }
             }
         } 
