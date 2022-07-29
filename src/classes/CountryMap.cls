@@ -18,45 +18,45 @@ public with sharing class CountryMap {
         List<District__c> districtNameList =[Select Name, State__r.Name, State__r.Country__r.Name From District__c];
         List<State__c> stateNameList = [Select Name, Country__r.Name From State__c];
         List<Country__c> countryNameList = [Select Name From Country__c];
-        Map<String, List<String>> CountryWithStateNameMap = new  Map<String, List<String>>();
+        Map<String, List<String>> countryWithStateNameMap = new  Map<String, List<String>>();
         for(Country__c cont:countryNameList){
             List<String> nameofState = new List<String>();
             for(State__c states : stateNameList ){ 
                 if(states.Country__r.Name== cont.Name){
                     nameofState.add(states.Name); 
-                    if(!CountryWithStateNameMap.containskey(cont.Name)){
-                        CountryWithStateNameMap.put(cont.Name,nameofState);  
+                    if(!countryWithStateNameMap.containskey(cont.Name)){
+                        countryWithStateNameMap.put(cont.Name,nameofState);  
                     }
                 } 
                 else{
-                     CountryWithStateNameMap.values().add(nameofState);
+                     countryWithStateNameMap.values().add(nameofState);
                 }
             }     
         }
-        //System.debug('Map of Country with States::'+ CountryWithStateNameMap);
+        //System.debug('Map of Country with States::'+ countryWithStateNameMap);
         //Map of Country with States::{China=(Shanghai, Beijing), India=(Bihar, Assam, Rajasthan, Gujarat), Russia=(Adygea', Chechnya), US=(Washington, Utah, NewYork)}       
-        Map<String,List<String>> StateWithDistrictNameMap = new Map<String,List<String>>();
+        Map<String,List<String>> stateWithDistrictNameMap = new Map<String,List<String>>();
         for(State__c states :stateNameList ){
             List<String> nameOfDistrict = new List<String>();
             for(District__c districts:districtNameList){
                 if(districts.State__r.Name == states.Name){
                     nameOfDistrict.add(districts.Name);
-                    if(!StateWithDistrictNameMap.containsKey(states.Name)){
-                        StateWithDistrictNameMap.put(states.Name,nameOfDistrict);        
+                    if(!stateWithDistrictNameMap.containsKey(states.Name)){
+                        stateWithDistrictNameMap.put(states.Name,nameOfDistrict);        
                         }
                     else{
-                       StateWithDistrictNameMap.values().add(nameOfDistrict);
+                       stateWithDistrictNameMap.values().add(nameOfDistrict);
                     }
                 }
             }
         }
-        for(String countryName :CountryWithStateNameMap.keySet()){
+        for(String countryName :countryWithStateNameMap.keySet()){
              if(!mapOfCountryWithStateNameAndDistrictName.containsKey(countryName)){
                 mapOfCountryWithStateNameAndDistrictName.put(countryName, new Map<String, List<String>>());
                  if(mapOfCountryWithStateNameAndDistrictName.containsKey(countryName)){
-                     for(String stateName:CountryWithStateNameMap.get(countryName)){  
+                     for(String stateName:countryWithStateNameMap.get(countryName)){  
                        mapOfCountryWithStateNameAndDistrictName.get(countryName).put(stateName,new List<String>());
-                         for(String districtName:StateWithDistrictNameMap.get(stateName)){
+                         for(String districtName:stateWithDistrictNameMap.get(stateName)){
                               List<String> districtList = new List<String>();
                             if(mapOfCountryWithStateNameAndDistrictName.get(countryName).containsKey(stateName)){
                                 districtList.add(districtName);
@@ -140,7 +140,7 @@ public with sharing class CountryMap {
     }    
     public class States{
         Public List<Districts> districts{get; set;}
-        Public string stateName{get; set;}
+        Public String stateName{get; set;}
     }
     public class Districts {
         Public String districtName{get; set;}
