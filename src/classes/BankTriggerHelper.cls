@@ -24,7 +24,8 @@ public with sharing class BankTriggerHelper {
                 } 
                 else if(b.Account_Type__c == 'Fixed Deposit'){
                     	b.Account_Number__c = 'FD' +'-'+ b.Account_Number__c;
-                }
+                }else
+                    b.addError('Type of account is required');
             }
         } 
     }
@@ -52,7 +53,10 @@ public with sharing class BankTriggerHelper {
     public static void sendEmailNotification(List<Bank__c> bank){
     List<Messaging.Email> emailList = new List<Messaging.Email>();
         for(Bank__c b:bank){
-            if(b.Email__c != null){
+             if(b.Email__c == null){
+                b.Email__c.addError('Email should mot be blank.');
+            }
+            else if(b.Email__c != null){
                 Messaging.SingleEmailMessage emailMsg = new Messaging.SingleEmailMessage();
                 String[] toaddress = new String[]{b.Email__c};
                     emailMsg.setToAddresses(toaddress);
@@ -67,7 +71,7 @@ public with sharing class BankTriggerHelper {
                         'Type of Account ::'+b.Account_Type__c  +'<br/><br/>'+
                         'Thank You!<br/><br/>';
                     emailMsg.setHtmlBody(content);
-                    emailList.add(emailMsg);             
+                    emailList.add(emailMsg);     
             }
         }
         Messaging.sendEmail(emailList); 
@@ -82,8 +86,11 @@ public with sharing class BankTriggerHelper {
     public static void sendEmailUpdateNotification(List<Bank__c> bank, Map<Id,Bank__c> oldPhoneNo){
     List<Messaging.Email> emailList = new List<Messaging.Email>();
         for(Bank__c b:bank){
-            if(oldPhoneNo != null && b.Phone__c != oldPhoneNo.get(b.Id).Phone__c && b.Phone__c != null){
-                if(b.Email__c != null){
+             if(oldPhoneNo != null && b.Phone__c != oldPhoneNo.get(b.Id).Phone__c && b.Phone__c != null){
+                if(b.Email__c == null){
+                b.Email__c.addError('Email should not be blank.');
+            	}
+            	else if(b.Email__c != null){
                     Messaging.SingleEmailMessage emailMsg = new Messaging.SingleEmailMessage();
                     String[] toaddress = new String[]{b.Email__c};
                         emailMsg.setToAddresses(toaddress);
@@ -96,7 +103,7 @@ public with sharing class BankTriggerHelper {
                             'Your Phone Number :: '+b.Phone__c +' <br/><br/>'+
                             'Thank You!<br/><br/>';
                         emailMsg.setHtmlBody(content);
-                        emailList.add(emailMsg);             
+                        emailList.add(emailMsg);                
                 }
             }
         }
