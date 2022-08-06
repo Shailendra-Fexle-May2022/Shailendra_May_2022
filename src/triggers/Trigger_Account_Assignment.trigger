@@ -4,7 +4,7 @@
  *  Created Date     :    2022/07/21
  *  Revision Logs    :    V_1.0 - Created - 2022/07/21
  **/ 
-trigger Trigger_Account_Assignment on Account (Before insert,Before Update) {
+trigger Trigger_Account_Assignment on Account (Before Insert,Before Update) {
     if(Trigger.isBefore){   
         system.debug('Checking in Before Trigger Operations');
         if(Trigger.isInsert){     

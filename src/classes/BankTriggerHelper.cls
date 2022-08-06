@@ -12,8 +12,8 @@ public with sharing class BankTriggerHelper {
     * Params        :    List<Bank__c>
     * Return        :    Void
     */
-    public static void insertPrefixInAccountNumber(List<Bank__c> nameList){
-        for(Bank__c b:nameList){
+    public static void insertPrefixInAccountNumber(List<Bank__c> newList){
+        for(Bank__c b:newList){
             if(b.Account_Number__c == null){
                 Integer accNumber = Integer.valueOf(1000000000 * Math.random());
                 b.Account_Number__c = String.valueOf(accNumber);
@@ -36,9 +36,9 @@ public with sharing class BankTriggerHelper {
     * Params        :    List<Bank__c>
     * Return        :    Void
     */
-    public static void updateAccountNumberMethod(List<Bank__c> nameList,Map<Id,Bank__c> oldAccountNo){
-        for(Bank__c b:nameList){
-            if(b.Account_Number__c != oldAccountNo.get(b.Id).Account_Number__c){
+    public static void updateAccountNumberMethod(List<Bank__c> newList,Map<Id,Bank__c> oldMap){
+        for(Bank__c b:newList){
+            if(b.Account_Number__c != oldMap.get(b.Id).Account_Number__c){
                     b.addError('Account Number can not be modify');
             }
         }
@@ -60,10 +60,10 @@ public with sharing class BankTriggerHelper {
                 Messaging.SingleEmailMessage emailMsg = new Messaging.SingleEmailMessage();
                 String[] toaddress = new String[]{b.Email__c};
                     emailMsg.setToAddresses(toaddress);
-                    String emailSub = 'Welcome' + b.Name; 
-                    emailMsg.setSubject(emailSub);
-                    String disName = 'Axis Bank';
-                    emailMsg.setSenderDisplayName(disName);
+                    String emailSubject = 'Welcome' + b.Name; 
+                    emailMsg.setSubject(emailSubject);
+                    String displayName = 'Axis Bank';
+                    emailMsg.setSenderDisplayName(displayName);
                     String content = 'Hi '+' '+ b.Name + ',<br/><br/>'+ 'Congratulation <br/><br/>'+
                         'You acccount has been successfully created <br/><br/>'+
                         'Your Phone Number :: '+b.Phone__c +' <br/><br/>'+
@@ -83,10 +83,10 @@ public with sharing class BankTriggerHelper {
     * Params        :    List<Bank__c>
     * Return        :    Void
     */
-    public static void sendEmailUpdateNotification(List<Bank__c> bank, Map<Id,Bank__c> oldPhoneNo){
+    public static void sendEmailUpdateNotification(List<Bank__c> newList, Map<Id,Bank__c> oldMap){
     List<Messaging.Email> emailList = new List<Messaging.Email>();
-        for(Bank__c b:bank){
-             if(oldPhoneNo != null && b.Phone__c != oldPhoneNo.get(b.Id).Phone__c && b.Phone__c != null){
+        for(Bank__c b:newList){
+             if(oldMap != null && b.Phone__c != oldMap.get(b.Id).Phone__c && b.Phone__c != null){
                 if(b.Email__c == null){
                 b.Email__c.addError('Email should not be blank.');
             	}
@@ -94,10 +94,10 @@ public with sharing class BankTriggerHelper {
                     Messaging.SingleEmailMessage emailMsg = new Messaging.SingleEmailMessage();
                     String[] toaddress = new String[]{b.Email__c};
                         emailMsg.setToAddresses(toaddress);
-                        String emailSub = 'Welcome' + b.Name; 
-                        emailMsg.setSubject(emailSub);
-                        String disName = 'Axis Bank';
-                        emailMsg.setSenderDisplayName(disName);
+                        String emailSubject = 'Welcome' + b.Name; 
+                        emailMsg.setSubject(emailSubject);
+                        String displayName = 'Axis Bank';
+                        emailMsg.setSenderDisplayName(displayName);
                         String content = 'Hi '+' '+ b.Name + ',<br/><br/>'+ 'Congratulation <br/><br/>'+
                             'You Phone Number has been successfully updated <br/><br/>'+
                             'Your Phone Number :: '+b.Phone__c +' <br/><br/>'+
