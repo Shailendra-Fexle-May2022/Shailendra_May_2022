@@ -59,7 +59,7 @@ public with sharing class StateTriggerHelper1 {
     public static void updateStateDistrictCountOnCountry(List<State__c> newList, Map<Id,State__c> oldMap) {
 
         for(State__c states: newList){
-            if(oldMap.get(states.Id).Country__c != null && states.Country__c != oldMap.get(states.Id).Country__c){
+            if(oldMap.get(states.Id).Country__c != null && states.Country__c != oldMap.get(states.Id).Country__c|| oldMap.get(states.Id).Total_Districts_Count__c != states.Total_Districts_Count__c){
                 countryStateMap.put(states.Country__c, new Country__c(Id=states.Country__c, Total_Districts_Trigger_Count__c = 0));
                 countryStateMap.put(oldMap.get(states.Id).Country__c, new Country__c(Id=oldMap.get(states.Id).Country__c, Total_Districts_Trigger_Count__c = 0));
                 System.debug(countryStateMap);
@@ -103,6 +103,7 @@ public with sharing class StateTriggerHelper1 {
             if(!totalNoOfDistrictsAndStatesOnCountryList.isEmpty()){
                 update totalNoOfDistrictsAndStatesOnCountryList; 
             } 
+	    new CountryMap();
             CountryMap.countryWrapperMethod('India');
     }
 }
