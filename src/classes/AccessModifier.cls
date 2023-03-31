@@ -5,7 +5,7 @@
  *  Revision Logs    :    V_1.0 - Created -  2022/7/5
  */
 public with sharing class AccessModifier {
-    private Integer rollNo = 10;
+    private Integer rollNo = 40;// Modified
     protected String name = 'Jorge';
     public static String classSection = 'B';
      /*
