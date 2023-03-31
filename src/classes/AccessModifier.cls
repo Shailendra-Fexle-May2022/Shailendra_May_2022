@@ -34,6 +34,10 @@ public with sharing class AccessModifier {
         System.debug('Call proteted variable=>'+call.name); //Call proteted variable=>Jorge
         System.debug('Hello Conflict');
     }
+
     System.debug();
     System.debug('Hello Conflict');
+    System.debug('Hello Werld');
+    //Hello Werld
+    //Call proteted variable=>Jorge
 }
