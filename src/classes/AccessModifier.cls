@@ -32,9 +32,12 @@ public with sharing class AccessModifier {
         AccessModifier call = new AccessModifier();
         System.debug('Call private integer variable::'+call.rollNo);//Call private integer variable::10
         System.debug('Call proteted variable=>'+call.name); //Call proteted variable=>Jorge
+        System.debug('Call proteted variable');
        
     }
+
     System.debug('Hello Werld');
+    //He
     //Hello Werld
     //Call proteted variable=>Jorge
 }
