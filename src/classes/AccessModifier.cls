@@ -35,4 +35,5 @@ public with sharing class AccessModifier {
         System.debug('Hello Conflict');
     }
     System.debug();
+    System.debug('Hello Conflict');
 }
